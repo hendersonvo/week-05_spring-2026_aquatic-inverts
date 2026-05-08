@@ -90,7 +90,7 @@ taxon_list_clean <- taxon_list |>
 
 Goal: create a data frame with median pH, median DO (mg/L), median salinity (ppt) for each date and site
 
-- create anew object from `water_quality`
+- create a new object from `water_quality`
 - clean column names
 - only include surveys from quarterly NCOS sites
 - create a new column called `date_site` to join with later data frames
