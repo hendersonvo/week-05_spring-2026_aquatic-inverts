@@ -165,10 +165,10 @@ In part 1d, you should end up with a three panel figure. All three panels should
 
 In part 1c, you will create one component of the three panel figure. Provide a list of the axes and geometries you will need to create a figure in 1c showing differences between sites in ostracod abundance.
 
-x-axis:
-y-axis:
-geometry to represent average abundance/L:
-geometry to represent medians:
+- x-axis: `site`
+- y-axis: `ave_lit`
+- geometry to represent average abundance/L: `geom_jitter`
+- geometry to represent medians: `stat_summary`
 
 
 
