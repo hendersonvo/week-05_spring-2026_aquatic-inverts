@@ -301,6 +301,15 @@ ostracods
 salinity / (copepods + ostracods)
 ```
 
+## e. Interpret your figure
+
+In 1-2 sentences each, describe:
+
+- differences between sites in copepod and ostracod abundance
+  - On average, there appears to be a higher abundance of copepods across sites compared to ostracods. We can visually tell because of how the blue points representing the central tendency of abundance are generally higher in the y-axis direction in the copepod plot than in the ostracod plot.
+- how ostracod abundance may relate (or not) to site-level differences in salinity
+  - There doesn't appear to be a clear relationship between ostracod abundance and salinity, which we can visually tell because the positions of the median points for ostracod abundance don't appear any higher or lower in response to site salinity (they don't consistently "move" with each other). We might otherwise expect an inverse correlation, but sites like North of Phelps and Phelps Road disrupt this idea. 
+
 
 
 
