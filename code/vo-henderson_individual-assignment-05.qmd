@@ -311,5 +311,21 @@ In 1-2 sentences each, describe:
   - There doesn't appear to be a clear relationship between ostracod abundance and salinity, which we can visually tell because the positions of the median points for ostracod abundance don't appear any higher or lower in response to site salinity (they don't consistently "move" with each other). We might otherwise expect an inverse correlation, but sites like North of Phelps and Phelps Road disrupt this idea. 
 
 
+# 2. Visualizing total abundance as a function of salinity
 
+## a. Plan your figure
+
+At the end of part 2c, you should have a figure:
+
+- depicting log-transformed average abundance/L on the y-axis and salinity on the x-axis
+- with different panels for each taxon in aq_ins_clean with free scales for both axes
+- with each taxon in its own color
+
+Provide a list of values, geometries, and/or arguments that would be appropriate to make a figure matching this description.
+
+- x-axis: `med_sal`
+- y-axis: `log_ave_lit`
+- color: `taxon`
+- geometry: `geom_point()`
+- facets: `taxon`
 
