@@ -329,3 +329,20 @@ Provide a list of values, geometries, and/or arguments that would be appropriate
 - geometry: `geom_point()`
 - facets: `taxon`
 
+## b. Wrangle your data
+
+```{r}
+aq_ins_salinity <- aq_ins_clean |> 
+  mutate(log_ave_lit = log(ave_lit) + 1) |> 
+  mutate(taxon_full = to_any_case(taxon, case = "title"),
+         taxon_full = as_vector(taxon_full),
+         taxon_full = fct_reorder(taxon_full, log_ave_lit, max)) |> 
+  arrange(desc(taxon_full)) |> 
+  select(med_sal, log_ave_lit, taxon_full)
+
+slice_sample(aq_ins_salinity, n = 10)
+```
+
+
+
+
