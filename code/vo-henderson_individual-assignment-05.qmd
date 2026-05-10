@@ -357,7 +357,7 @@ slice_sample(aq_ins_salinity, n = 10)
 
 ## c. Code your figure
 
-```{r}
+```{r fig.width=8, fig.height=6}
 # base layer: ggplot
 ggplot(data = aq_ins_salinity,
        # set x- and y-axes, differentiate color by taxon
