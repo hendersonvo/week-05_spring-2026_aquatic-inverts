@@ -254,10 +254,14 @@ At the end of your code chunk, display 10 random rows from your data frame using
 
 
 ```{r}
+# create a new object from aq_ins_clean
 ostracods <- aq_ins_clean |> 
+  # filter to only include ostracod taxon
   filter(taxon == "ostracod") |> 
+  # log transform average abundance/L as a new column
   mutate(log_ave_lit = log(ave_lit + 1))
 
+# display 10 rows from ostracods
 slice_sample(ostracods, n = 10)
 ```
 
@@ -299,6 +303,7 @@ ostracods
 ## d. Create a multipanel figure
 
 ```{r fig.height=8, fig.width=9}
+# stack salinity on top and copepods and ostracods side by side
 salinity / (copepods + ostracods)
 ```
 
@@ -333,31 +338,45 @@ Provide a list of values, geometries, and/or arguments that would be appropriate
 ## b. Wrangle your data
 
 ```{r}
+# create a new object from aq_ins_clean
 aq_ins_salinity <- aq_ins_clean |> 
+  # log transform average abundance/L as a new column
   mutate(log_ave_lit = log(ave_lit + 1)) |> 
+  # set taxon to title case and reorder by max abundance
   mutate(taxon_full = to_any_case(taxon, case = "title"),
          taxon_full = as_vector(taxon_full),
-         taxon_full = fct_reorder(taxon_full, log_ave_lit, max)) |> 
+         taxon_full = fct_reorder(taxon_full, log_ave_lit, max)) |>
+  # arrange data frame by taxon
   arrange(desc(taxon_full)) |> 
+  # select columns of interest
   select(med_sal, log_ave_lit, taxon_full)
 
+# display 10 rows from aq_ins_salinity
 slice_sample(aq_ins_salinity, n = 10)
 ```
 
 ## c. Code your figure
 
 ```{r}
+# base layer: ggplot
 ggplot(data = aq_ins_salinity,
+       # set x- and y-axes, differentiate color by taxon
        aes(x = med_sal,
            y = log_ave_lit,
            color = taxon_full)) +
+  # first layer: point geometry
   geom_point() +
+  # create panels by taxon, set free scale y-axis
   facet_wrap(~ taxon_full,
              scale = "free") +
+  # add labels to axes
   labs(x = "Median salinity (ppt)",
        y = "log + 1 transformed average abundance/L") +
+  # change colors
   scale_color_manual(values = viridis(9)) +
+  # change theme
   theme_bw() +
+  # remove legend
   theme(legend.position = "none")
 ```
 
