@@ -2,7 +2,7 @@
 
 ## General information
 
-This repository contains data and code to explore patterns in aquatic invertebrate abundance at North Campus Open Space.
+This repository contains data and code to explore patterns in aquatic invertebrate abundance at North Campus Open Space. This includes both in-class materials and an individual homework assignment.
 
 To work with the code in this repository, you will need the following packages:
 
@@ -24,7 +24,11 @@ library(patchwork)
 ├── README.md
 ├── code                                          
 │   ├── week-05_in-class-KEY.pdf                  # key (comes with repo)
-│   └── week-05_in-class-KEY.qmd
+│   ├── week-05_in-class-KEY.qmd
+|   ├── week-05_in-class-template.pdf             # in-class materials
+|   ├── week-05_in-class-template.qmd
+|   ├── vo-henderson_individual-assignment-05.pdf # homework assignment
+|   └── vo-henderson_individual-assignment-05.qmd
 ├── data
 │   ├── Aquatic Sampling Data-2026-03-10.xlsx     # invertebrate survey data
 │   └── taxon_list.csv                            # taxonomic information
