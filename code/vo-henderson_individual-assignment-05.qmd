@@ -25,8 +25,9 @@ library(scales)
 # file organization
 library(here)
 
-# arrange plots
+# plots
 library(patchwork)
+library(viridis)
 ```
 
 ## Data
@@ -333,7 +334,7 @@ Provide a list of values, geometries, and/or arguments that would be appropriate
 
 ```{r}
 aq_ins_salinity <- aq_ins_clean |> 
-  mutate(log_ave_lit = log(ave_lit) + 1) |> 
+  mutate(log_ave_lit = log(ave_lit + 1)) |> 
   mutate(taxon_full = to_any_case(taxon, case = "title"),
          taxon_full = as_vector(taxon_full),
          taxon_full = fct_reorder(taxon_full, log_ave_lit, max)) |> 
@@ -343,6 +344,24 @@ aq_ins_salinity <- aq_ins_clean |>
 slice_sample(aq_ins_salinity, n = 10)
 ```
 
+## c. Code your figure
 
+```{r}
+ggplot(data = aq_ins_salinity,
+       aes(x = med_sal,
+           y = log_ave_lit,
+           color = taxon_full)) +
+  geom_point() +
+  facet_wrap(~ taxon_full,
+             scale = "free") +
+  labs(x = "Median salinity (ppt)",
+       y = "log + 1 transformed average abundance/L") +
+  scale_color_manual(values = viridis(9)) +
+  theme_bw() +
+  theme(legend.position = "none")
+```
 
+## d. Interpret your figure
+
+Across all taxa, there appears to be a general negative relationship between average abundance and salinity. On average, as we move along the x-axis, the points tend to be positioned lower along the y-axis. This relationship is weaker with taxa like the Copepod and Annelida Polychaete, and stronger with taxa like the Ostracod and Cladocera. 
 
