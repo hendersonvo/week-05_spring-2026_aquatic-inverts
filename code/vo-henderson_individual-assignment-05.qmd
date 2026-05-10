@@ -151,7 +151,7 @@ aq_ins_clean <- aq_ins |>
     site == "NEC" ~ "South of Venoco Bridge",
     site == "NMC" ~ "Main Channel",
     site == "NPB" ~ "South of Phelps Bridge",
-    site == "NPB1" ~ "North of Phelp Bridge",
+    site == "NPB1" ~ "North of Phelps Bridge",
     site == "NPB2" ~ "Phelps Road",
     site == "NWP" ~ "West Pond",
     site == "NDC" ~ "Devereux Creek"
@@ -220,7 +220,8 @@ copepods <- ggplot(data = copepods,
   stat_summary(geom = "point",
                fun = "median",
                size = 4,
-               color = "blue") +
+               color = "blue",
+               shape = 17) +
   # wrapping x-axis text
   scale_x_discrete(labels = label_wrap(10)) +
   # relabelling x- and y-axis, adding title
@@ -285,8 +286,9 @@ ostracods <- ggplot(data = ostracods,
   # second layer: points to represent medians
   stat_summary(geom = "point",
                fun = "median",
-               size = 4,
-               color = "blue") +
+               size = 6,
+               color = "forestgreen",
+               shape = 18) +
   # wrapping x-axis text
   scale_x_discrete(labels = label_wrap(10)) +
   # relabelling x- and y-axis, adding title
@@ -368,7 +370,7 @@ ggplot(data = aq_ins_salinity,
   geom_point() +
   # create panels by taxon, set free scale y-axis
   facet_wrap(~ taxon_full,
-             scale = "free") +
+             scales = "free") +
   # add labels to axes
   labs(x = "Median salinity (ppt)",
        y = "log + 1 transformed average abundance/L") +
